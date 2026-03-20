@@ -64,12 +64,27 @@ body {
 .nav-brand {
   display: flex; align-items: center; gap: 12px;
 }
-.nav-logo {
-  background: var(--mtn-yellow);
-  color: var(--primary);
-  font-weight: 900; font-size: 14px;
-  padding: 4px 10px; border-radius: 6px;
-  letter-spacing: 0.5px;
+.dex-mtn-logo {
+  display: flex; align-items: center; gap: 6px;
+}
+.dex-part {
+  font-size: 18px; font-weight: 900;
+  color: white; letter-spacing: -0.5px;
+}
+.win-part {
+  font-size: 18px; font-weight: 900;
+  color: var(--accent); letter-spacing: -0.5px;
+}
+.mtn-oval {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 2.5px solid var(--mtn-yellow);
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-left: 2px;
+}
+.mtn-oval-text {
+  font-size: 13px; font-weight: 900;
+  color: var(--mtn-yellow); letter-spacing: 0.5px;
 }
 .nav-title {
   color: white; font-weight: 700; font-size: 15px;
@@ -154,7 +169,7 @@ body {
 }
 .hero-stat { text-align: center; }
 .hero-stat .num {
-  font-size: 2.5rem; font-weight: 900; color: white;
+  font-size: 2.5rem; font-weight: 900; color: var(--accent);
   line-height: 1;
 }
 .hero-stat .num span { color: var(--accent); }
@@ -542,7 +557,11 @@ footer strong { color: var(--accent); }
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-brand">
-    <span class="nav-logo">MTN</span>
+    <!-- Dexwin × MTN combo logo -->
+    <div class="dex-mtn-logo">
+      <span class="dex-part">dex</span><span class="win-part">win</span>
+      <span class="mtn-oval"><span class="mtn-oval-text">MTN</span></span>
+    </div>
     <span class="nav-title">OneUp <span>Gaming Research</span></span>
   </div>
   <div class="nav-countries">
@@ -626,7 +645,7 @@ footer strong { color: var(--accent); }
     <div class="os-item"><div class="os-dot"></div><span class="os-label">Top Feature:</span> <span class="os-val">Reward System 85%</span></div>
     <div class="os-item"><div class="os-dot yellow"></div><span class="os-label">Top Friction:</span> <span class="os-val">Groups/Forums/Tribes Confusion 73%</span></div>
     <div class="os-item"><div class="os-dot red"></div><span class="os-label">Critical Issue:</span> <span class="os-val">Gem value transparency</span></div>
-    <div class="os-item"><div class="os-dot"></div><span class="os-label">Primary Device:</span> <span class="os-val">Android 92%</span></div>
+    <div class="os-item"><div class="os-dot"></div><span class="os-label">Primary Device:</span> <span class="os-val">Mobile 92%</span></div>
     <div class="os-item"><div class="os-dot yellow"></div><span class="os-label">Preferred Payment:</span> <span class="os-val">MOMO 80%</span></div>
   </div>
 </div>
@@ -666,7 +685,7 @@ footer strong { color: var(--accent); }
     <div class="stat-card">
       <div class="icon">📱</div>
       <div class="value">92<span class="unit">%</span></div>
-      <div class="label">Primary: Android</div>
+      <div class="label">Primary: Mobile</div>
       <span class="trend trend-up">Dominant device</span>
     </div>
   </div>
@@ -690,7 +709,7 @@ footer strong { color: var(--accent); }
       <div class="section-tag" style="margin-bottom:16px">Primary Device</div>
       <div class="chart-wrap"><canvas id="chartDevice"></canvas></div>
       <div style="margin-top:16px">
-        <div class="prog-row"><span class="prog-label">Android</span><div class="prog-bar-wrap"><div class="prog-bar" data-width="92"></div></div><span class="prog-val">92%</span></div>
+        <div class="prog-row"><span class="prog-label">Mobile</span><div class="prog-bar-wrap"><div class="prog-bar" data-width="92"></div></div><span class="prog-val">92%</span></div>
         <div class="prog-row"><span class="prog-label">Console (PS5)</span><div class="prog-bar-wrap"><div class="prog-bar" data-width="5"></div></div><span class="prog-val">5%</span></div>
         <div class="prog-row"><span class="prog-label">Desktop/PC</span><div class="prog-bar-wrap"><div class="prog-bar" data-width="3"></div></div><span class="prog-val">3%</span></div>
         <div class="prog-row"><span class="prog-label">Tablet</span><div class="prog-bar-wrap"><div class="prog-bar yellow" data-width="2"></div></div><span class="prog-val">2%</span></div>
@@ -4038,7 +4057,7 @@ footer strong { color: var(--accent); }
       <div class="mc-sub">out of 4 · 40 participants</div>
       <div class="mc-stats">
         <div class="mc-stat-row"><span class="mc-stat-label">Gender</span><span class="mc-stat-val">52% F · 48% M</span></div>
-        <div class="mc-stat-row"><span class="mc-stat-label">Primary Device</span><span class="mc-stat-val">Android 92%</span></div>
+        <div class="mc-stat-row"><span class="mc-stat-label">Primary Device</span><span class="mc-stat-val">Mobile 92%</span></div>
         <div class="mc-stat-row"><span class="mc-stat-label">MTN Unaware</span><span class="mc-stat-val" style="color:var(--red)">67.5%</span></div>
         <div class="mc-stat-row"><span class="mc-stat-label">Top Feature</span><span class="mc-stat-val">Rewards 85%</span></div>
         <div class="mc-stat-row"><span class="mc-stat-label">Pref. Payment</span><span class="mc-stat-val">MOMO 80%</span></div>
@@ -4580,7 +4599,7 @@ function buildAllCharts() {
   makeChart('chartDevice', {
     type: 'doughnut',
     data: {
-      labels: ['Android','Console','Desktop','Tablet'],
+      labels: ['Mobile','Console','Desktop','Tablet'],
       datasets: [{ data:[92,5,3,2], backgroundColor:[ACCENT,PRIMARY,YELLOW,RED], borderWidth:0, hoverOffset:8 }]
     },
     options: { responsive:true, maintainAspectRatio:false, cutout:'68%', ...defs }
